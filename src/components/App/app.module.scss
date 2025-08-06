@@ -1,0 +1,20 @@
+@use "../../scss/abstracts" as *;
+@use "../../scss/base/typography" as *;
+
+.heading {
+    @include text-heading;
+}
+
+.container {
+    background-color: $color-surface-dark;
+    height: 100vh;
+    max-width: rem(1048px);
+    margin: 0 auto;
+}
+
+.body {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: rem(16px);
+    margin-top: rem(20px);
+}
