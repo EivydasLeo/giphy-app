@@ -3,45 +3,43 @@ import styles from "./App.module.scss";
 import { GifCard } from "../GifCard/GifCard";
 import RefreshButton from "../RefreshButton/RefreshButton";
 import { useFetchGifs } from "../../hooks/useFetchGifs";
-import { useLockedGifs } from "../../hooks/useLockedGifs";
+import { useLockedGifs } from "../../context/useLockedGifs";
 
 export default function App() {
+    const { lockedGifs, toggleLock } = useLockedGifs();
     const { gifs, fetchGifs } = useFetchGifs();
-    const { lockedIds, toggleLock } = useLockedGifs();
+    const heading = "Giphy";
 
     useEffect(() => {
-        fetchGifs();
+        fetchGifs(lockedGifs);
     }, [fetchGifs]);
 
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (e.code === "Space") {
-                console.log("clicked");
                 e.preventDefault();
-                fetchGifs();
+                fetchGifs(lockedGifs);
             }
         };
 
         window.addEventListener("keydown", handleKeyDown);
         return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [fetchGifs]);
+    }, [fetchGifs, lockedGifs]);
 
     return (
-        <>
-            <div className={styles.container}>
-                <h1 className={styles.heading}>Giphy</h1>
-                <div className={styles.body}>
-                    {gifs.map((gif) => (
-                        <GifCard
-                            key={gif.id}
-                            gif={gif}
-                            isLocked={lockedIds.includes(gif.id)}
-                            onToggleLock={() => toggleLock(gif.id)}
-                        />
-                    ))}
-                </div>
-                <RefreshButton onClick={fetchGifs} className={styles.refresh} />
+        <div className={styles.container}>
+            <h1 className={styles.heading}>{heading}</h1>
+            <div className={styles.body}>
+                {gifs.map((gif) => (
+                    <GifCard
+                        key={gif.id}
+                        gif={gif}
+                        isLocked={lockedGifs.some((locked) => locked.id === gif.id)}
+                        onToggleLock={() => toggleLock(gif)}
+                    />
+                ))}
             </div>
-        </>
+            <RefreshButton onClick={() => fetchGifs(lockedGifs)} className={styles.refresh} />
+        </div>
     );
 }
