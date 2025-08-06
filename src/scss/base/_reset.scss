@@ -1,3 +1,5 @@
+@use "../abstracts/" as *;
+
 *,
 *::before,
 *::after {
@@ -9,6 +11,8 @@
 html,
 body {
     height: 100%;
+    font-family: $font-inter;
+    background-color: $color-background-dark;
 }
 
 ul,

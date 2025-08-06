@@ -1,4 +1,4 @@
-import styles from "./gifcard.module.scss";
+import styles from "./GifCard.module.scss";
 import Lock from "../../assets/Lock.svg";
 
 export const GifCard = ({ gif }) => {

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import styles from "./app.module.scss";
+import styles from "./App.module.scss";
 import { GifCard } from "../GifCard/GifCard";
+import RefreshButton from "../RefreshButton/RefreshButton";
 
 const API_KEY = import.meta.env.VITE_GIPHY_API_KEY;
 
@@ -32,6 +33,7 @@ export default function App() {
                         <GifCard key={gif.id} gif={gif} />
                     ))}
                 </div>
+                <RefreshButton className={styles.refresh} />
             </div>
         </>
     );
