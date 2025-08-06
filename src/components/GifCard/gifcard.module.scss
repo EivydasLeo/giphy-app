@@ -1,0 +1,46 @@
+@use "../../scss/abstracts" as *;
+@use "../../scss/base/typography" as *;
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.card img:first-child {
+    width: 100%;
+    height: rem(170px);
+    object-fit: cover;
+}
+
+.image {
+    border: 2px solid $color-white;
+    border-radius: rem(8px);
+}
+
+.locker {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+.meta {
+    padding: 0 rem(12px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.gif {
+    display: flex;
+    flex-direction: column;
+}
+
+.date {
+    @include text-date;
+}
+
+.tags {
+    @include text-hashtag;
+}
