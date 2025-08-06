@@ -1,28 +1,30 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styles from "./App.module.scss";
 import { GifCard } from "../GifCard/GifCard";
 import RefreshButton from "../RefreshButton/RefreshButton";
-
-const API_KEY = import.meta.env.VITE_GIPHY_API_KEY;
+import { useFetchGifs } from "../../hooks/useFetchGifs";
+import { useLockedGifs } from "../../hooks/useLockedGifs";
 
 export default function App() {
-    const [gifs, setGifs] = useState([]);
+    const { gifs, fetchGifs } = useFetchGifs();
+    const { lockedIds, toggleLock } = useLockedGifs();
 
     useEffect(() => {
-        const fetchGifs = async () => {
-            try {
-                const res = await fetch(
-                    `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=leisure&limit=12`,
-                );
-                const data = await res.json();
-                setGifs(data.data);
-            } catch (error) {
-                console.error("Klaida parsisiunčiant GIF'us:", error);
+        fetchGifs();
+    }, [fetchGifs]);
+
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.code === "Space") {
+                console.log("clicked");
+                e.preventDefault();
+                fetchGifs();
             }
         };
 
-        fetchGifs();
-    }, []);
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [fetchGifs]);
 
     return (
         <>
@@ -30,10 +32,15 @@ export default function App() {
                 <h1 className={styles.heading}>Giphy</h1>
                 <div className={styles.body}>
                     {gifs.map((gif) => (
-                        <GifCard key={gif.id} gif={gif} />
+                        <GifCard
+                            key={gif.id}
+                            gif={gif}
+                            isLocked={lockedIds.includes(gif.id)}
+                            onToggleLock={() => toggleLock(gif.id)}
+                        />
                     ))}
                 </div>
-                <RefreshButton className={styles.refresh} />
+                <RefreshButton onClick={fetchGifs} className={styles.refresh} />
             </div>
         </>
     );
