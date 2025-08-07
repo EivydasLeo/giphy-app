@@ -9,8 +9,8 @@
 
 .container {
     display: flex;
-    flex-direction: column;
     justify-content: space-evenly;
+    flex-direction: column;
     background-color: $color-surface-dark;
     height: 100vh;
     max-width: rem(1048px);
