@@ -28,18 +28,24 @@ export default function App() {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.heading}>{heading}</h1>
-            <div className={styles.body}>
-                {gifs.map((gif) => (
-                    <GifCard
-                        key={gif.id}
-                        gif={gif}
-                        isLocked={lockedGifs.some((locked) => locked.id === gif.id)}
-                        onToggleLock={() => toggleLock(gif)}
-                    />
-                ))}
-            </div>
-            <RefreshButton onClick={() => fetchGifs(lockedGifs)} className={styles.refresh} />
+            <header>
+                <h1 className={styles.heading}>{heading}</h1>
+            </header>
+            <main>
+                <div className={styles.body}>
+                    {gifs.map((gif) => (
+                        <GifCard
+                            key={gif.id}
+                            gif={gif}
+                            isLocked={lockedGifs.some((locked) => locked.id === gif.id)}
+                            onToggleLock={() => toggleLock(gif)}
+                        />
+                    ))}
+                </div>
+            </main>
+            <footer>
+                <RefreshButton onClick={() => fetchGifs(lockedGifs)} className={styles.refresh} />
+            </footer>
         </div>
     );
 }

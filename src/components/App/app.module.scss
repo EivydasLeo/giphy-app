@@ -2,14 +2,20 @@
 @use "../../scss/base/typography" as *;
 
 .heading {
+    display: flex;
+    justify-self: center;
     @include text-heading;
 }
 
 .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     background-color: $color-surface-dark;
     height: 100vh;
     max-width: rem(1048px);
     margin: 0 auto;
+    padding: rem(20px);
 }
 
 .body {
