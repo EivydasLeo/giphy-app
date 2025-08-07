@@ -1,0 +1,26 @@
+@use "../../scss/abstracts" as *;
+@use "../../scss/base/typography" as *;
+
+.heading {
+    display: flex;
+    justify-self: center;
+    @include text-heading;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: $color-surface-dark;
+    height: 100vh;
+    max-width: rem(1048px);
+    margin: 0 auto;
+    padding: rem(20px);
+}
+
+.body {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: rem(16px);
+    margin: rem(20px) 0;
+}

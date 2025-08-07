@@ -1,0 +1,41 @@
+@use "../abstracts" as *;
+
+// Font sizes
+$font-size-36: rem(36px);
+$font-size-16: rem(16px);
+$font-size-14: rem(14px);
+$font-size-12: rem(12px);
+
+// Font weights
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+
+// Line heights
+$line-height-42: rem(42px);
+$line-height-20: rem(20px);
+$line-height-18: rem(18px);
+
+@mixin text($font-weight, $font-size, $line-height, $color) {
+    font-weight: $font-weight;
+    font-size: $font-size;
+    line-height: $line-height;
+    color: $color;
+}
+
+@mixin text-heading {
+    @include text($font-weight-bold, $font-size-36, $line-height-42, $color-white);
+}
+
+@mixin text-date {
+    @include text($font-weight-regular, $font-size-12, $line-height-18, $color-white);
+}
+
+@mixin text-hashtag {
+    @include text($font-weight-bold, $font-size-16, $line-height-18, $color-white);
+}
+
+@mixin text-refresh {
+    @include text($font-weight-regular, $font-size-14, $line-height-20, $color-white);
+}

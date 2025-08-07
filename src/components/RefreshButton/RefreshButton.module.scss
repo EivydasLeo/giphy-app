@@ -1,0 +1,15 @@
+@use "../../scss/abstracts" as *;
+@use "../../scss/base/typography" as *;
+
+.button {
+    display: flex;
+    align-items: center;
+    gap: rem(10px);
+    background-color: $color-gray;
+    border: none;
+    border-radius: rem(8px);
+    cursor: pointer;
+    @include text-refresh;
+    padding: rem(14px);
+    margin: 0 auto;
+}
