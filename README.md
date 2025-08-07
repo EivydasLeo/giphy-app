@@ -16,7 +16,7 @@ A React application that allows users to view, lock, and refresh GIFs from the G
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 -   React
 -   SCSS
@@ -27,7 +27,7 @@ A React application that allows users to view, lock, and refresh GIFs from the G
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
@@ -59,6 +59,9 @@ src/
 
 ```bash
 git clone https://github.com/EivydasLeo/giphy-app
+```
+
+```bash
 cd giphy-app
 ```
 
