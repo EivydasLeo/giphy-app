@@ -31,13 +31,12 @@ A React application that allows users to view, lock, and refresh GIFs from the G
 
 ```
 src/
+├── assets/
+│   └── Refresh.svg
 ├── components/
 │   ├── App/
-│   │   └── App.jsx
 │   ├── GifCard/
-│   │   └── GifCard.jsx
-│   ├── RefreshButton/
-│       └── RefreshButton.jsx
+│   └── RefreshButton/
 ├── context/
 │   ├── LockedGifsProvider.jsx
 │   ├── LockedGifsContext.jsx
@@ -45,18 +44,21 @@ src/
 ├── hooks/
 │   └── useFetchGifs.jsx
 ├── scss/
+│   ├── abstracts/
+│   ├── base/
+│   ├── utils/
 │   └── main.scss
 └── main.jsx
 ```
 
 ---
 
-## 🔧 Getting Started
+## Getting Started
 
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/your-username/giphy-app.git
+git clone https://github.com/EivydasLeo/giphy-app
 cd giphy-app
 ```
 
@@ -72,7 +74,7 @@ npm install
 VITE_GIPHY_API_KEY=YOUR_GIPHY_API_KEY
 ```
 
-Get your API key from [Giphy Developers](https://developers.giphy.com/).
+Get your API key from [Giphy Developers](https://developers.giphy.com/dashboard/).
 
 4. **Run the project**
 

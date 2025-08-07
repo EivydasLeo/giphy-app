@@ -1,4 +1,4 @@
-import styles from "./RefreshButton.module.scss";
+import styles from "./refreshButton.module.scss";
 import Refresh from "../../assets/Refresh.svg";
 
 const RefreshButton = ({ onClick, className = "" }) => {
