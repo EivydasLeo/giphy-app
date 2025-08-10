@@ -1,4 +1,4 @@
-import styles from "./refreshButton.module.scss";
+import styles from "./refreshbutton.module.scss";
 
 export const RefreshButton = ({ onClick, className = "" }) => {
     const text = "Hit here to refresh gifs or press space";
