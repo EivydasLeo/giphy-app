@@ -1,5 +1,7 @@
 # Giphy App
 
+**Live Demo:** [https://giphy-app-silk.vercel.app/](https://giphy-app-silk.vercel.app/)
+
 A React application that allows users to view, lock, and refresh GIFs from the Giphy API.
 
 ---
