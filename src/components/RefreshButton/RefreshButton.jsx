@@ -1,13 +1,12 @@
 import styles from "./RefreshButton.module.scss";
-import Refresh from "../../assets/Refresh.svg";
+import refreshIcon from "../../assets/refresh.svg";
 
-const RefreshButton = ({ onClick, className = "" }) => {
+export const RefreshButton = ({ onClick, className = "" }) => {
     const text = "Hit here to refresh gifs or press space";
 
     return (
         <button onClick={onClick} className={`${styles.button} ${className}`}>
-            <img src={Refresh} alt="refresh" /> {text}
+            <img src={refreshIcon} alt="refresh" /> {text}
         </button>
     );
 };
-export default RefreshButton;

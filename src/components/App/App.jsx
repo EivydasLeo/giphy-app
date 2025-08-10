@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import styles from "./App.module.scss";
 import { GifCard } from "../GifCard/GifCard";
-import RefreshButton from "../RefreshButton/RefreshButton";
+import { RefreshButton } from "../RefreshButton/RefreshButton";
 import { useFetchGifs } from "../../hooks/useFetchGifs";
 import { useLockedGifs } from "../../context/useLockedGifs";
 
-export default function App() {
+export const App = () => {
     const { lockedGifs, toggleLock } = useLockedGifs();
     const { gifs, fetchGifs } = useFetchGifs();
     const heading = "Giphy";
@@ -48,4 +48,4 @@ export default function App() {
             </footer>
         </div>
     );
-}
+};

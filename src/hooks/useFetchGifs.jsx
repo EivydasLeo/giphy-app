@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 
 const API_KEY = import.meta.env.VITE_GIPHY_API_KEY;
 
-export function useFetchGifs() {
+export const useFetchGifs = () => {
     const [gifs, setGifs] = useState([]);
 
     const fetchGifs = useCallback(async (lockedGifs = []) => {
@@ -33,4 +33,4 @@ export function useFetchGifs() {
     }, []);
 
     return { gifs, fetchGifs };
-}
+};

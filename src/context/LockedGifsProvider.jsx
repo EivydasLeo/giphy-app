@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { LockedGifsContext } from "./LockedGifsContext";
 
-export function LockedGifsProvider({ children }) {
+export const LockedGifsProvider = ({ children }) => {
     const [lockedGifs, setLockedGifs] = useState(() => {
         const saved = localStorage.getItem("lockedGifs");
         return saved ? JSON.parse(saved) : [];
@@ -24,4 +24,4 @@ export function LockedGifsProvider({ children }) {
             {children}
         </LockedGifsContext.Provider>
     );
-}
+};
