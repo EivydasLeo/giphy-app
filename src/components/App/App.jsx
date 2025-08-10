@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import styles from "./App.module.scss";
+import styles from "./app.module.scss";
 import { GifCard } from "../GifCard/GifCard";
 import { RefreshButton } from "../RefreshButton/RefreshButton";
 import { useFetchGifs } from "../../hooks/useFetchGifs";
