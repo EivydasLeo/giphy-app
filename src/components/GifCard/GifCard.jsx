@@ -1,4 +1,4 @@
-import styles from "./GifCard.module.scss";
+import styles from "./gifCard.module.scss";
 import lockIcon from "../../assets/lock.svg";
 
 export const GifCard = ({ gif, isLocked, onToggleLock }) => {
