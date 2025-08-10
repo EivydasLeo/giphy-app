@@ -9,9 +9,7 @@ export const GifCard = ({ gif, isLocked, onToggleLock }) => {
     return (
         <div className={styles.card} onClick={onToggleLock}>
             <img src={gif.images.fixed_height.url} className={styles.image} alt={gif.title} />
-            {isLocked && (
-                <img src="../../../public/svg/lock.svg" className={styles.lock} alt="lock" />
-            )}
+            {isLocked && <img src="/svg/lock.svg" className={styles.lock} alt="lock" />}
             <div className={styles.meta}>
                 <span className={styles.date}>{date}</span>
                 <span className={styles.tags}>{tags}</span>
