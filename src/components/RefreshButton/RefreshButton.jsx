@@ -1,4 +1,4 @@
-import styles from "./refreshButton.module.scss";
+import styles from "./refreshbutton.module.scss";
 import refreshIcon from "../../assets/refresh.svg";
 
 export const RefreshButton = ({ onClick, className = "" }) => {
