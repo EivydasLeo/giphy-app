@@ -1,0 +1,32 @@
+@use "../../scss/abstracts" as *;
+@use "../../scss/base/typography" as *;
+
+.card {
+    width: 100%;
+}
+
+.imageWrapper {
+    position: relative;
+}
+
+.image {
+    width: 100%;
+    height: rem(170px);
+    border-radius: rem(8px);
+}
+
+.lockIcon {
+    position: absolute;
+    right: 14px;
+    top: 14px;
+}
+
+.date {
+    text-align: center;
+}
+
+.tags {
+    display: flex;
+    justify-content: center;
+    gap: rem(8px);
+}

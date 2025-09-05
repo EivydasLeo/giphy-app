@@ -4,10 +4,12 @@ import { GifCard } from "../GifCard/GifCard";
 import { RefreshButton } from "../RefreshButton/RefreshButton";
 import { useFetchGifs } from "../../hooks/useFetchGifs";
 import { useLockedGifs } from "../../context/useLockedGifs";
+import "react-loading-skeleton/dist/skeleton.css";
+import { LoadingSkeleton } from "../LoadingSkeleton/LoadingSkeleton";
 
 export const App = () => {
     const { lockedGifs, toggleLock } = useLockedGifs();
-    const { gifs, fetchGifs } = useFetchGifs();
+    const { gifs, fetchGifs, loading } = useFetchGifs();
     const heading = "Giphy";
 
     useEffect(() => {
@@ -33,14 +35,16 @@ export const App = () => {
             </header>
             <main>
                 <div className={styles.body}>
-                    {gifs.map((gif) => (
-                        <GifCard
-                            key={gif.id}
-                            gif={gif}
-                            isLocked={lockedGifs.some((locked) => locked.id === gif.id)}
-                            onToggleLock={() => toggleLock(gif)}
-                        />
-                    ))}
+                    {loading
+                        ? Array.from({ length: 12 }).map((_, i) => <LoadingSkeleton key={i} />)
+                        : gifs.map((gif) => (
+                              <GifCard
+                                  key={gif.id}
+                                  gif={gif}
+                                  isLocked={lockedGifs.some((locked) => locked.id === gif.id)}
+                                  onToggleLock={() => toggleLock(gif)}
+                              />
+                          ))}
                 </div>
             </main>
             <footer>
