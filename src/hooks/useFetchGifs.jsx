@@ -1,16 +1,21 @@
 import { useState, useCallback } from "react";
 
 const API_KEY = import.meta.env.VITE_GIPHY_API_KEY;
+const GRID_SIZE = 12;
+const API_FETCH_LIMIT = 24;
+const MAX_OFFSET = 100;
 
 export const useFetchGifs = () => {
     const [gifs, setGifs] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const fetchGifs = useCallback(async (lockedGifs = []) => {
-        const offset = Math.floor(Math.random() * 100);
+        setLoading(true);
+        const offset = Math.floor(Math.random() * MAX_OFFSET);
 
         try {
             const res = await fetch(
-                `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=leisure&limit=24&offset=${offset}`,
+                `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=leisure&limit=${API_FETCH_LIMIT}&offset=${offset}`,
             );
             const data = await res.json();
 
@@ -18,7 +23,7 @@ export const useFetchGifs = () => {
                 (gif) => !lockedGifs.some((locked) => locked.id === gif.id),
             );
 
-            const needed = 12 - lockedGifs.length;
+            const needed = GRID_SIZE - lockedGifs.length;
 
             const sortedFresh = fresh
                 .sort((a, b) => new Date(b.import_datetime) - new Date(a.import_datetime))
@@ -29,8 +34,10 @@ export const useFetchGifs = () => {
             setGifs(combined);
         } catch (err) {
             console.error("Nepavyko parsiųsti GIF'ų:", err);
+        } finally {
+            setLoading(false);
         }
     }, []);
 
-    return { gifs, fetchGifs };
+    return { gifs, fetchGifs, loading };
 };
